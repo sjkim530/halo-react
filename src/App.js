@@ -1,9 +1,13 @@
-function App() {
-  return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
-  );
-}
+import React, { Component } from "react";
+import Todos from "./components/Todos";
 
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Todos</h1>
+        <Todos />
+      </div>
+    );
+  }
+}
