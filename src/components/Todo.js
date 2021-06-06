@@ -11,8 +11,8 @@ const Todo = (props) => {
 
   return (
     <div key={todo.id}>
-      <input type="checkbox" />
-      <p>{todo.content}</p>
+      <input className="checkTodo" type="checkbox" />
+      <label for="checkTodo">{todo.content}</label>
       <button
         className="delete"
         type="button"

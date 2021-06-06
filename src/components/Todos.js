@@ -26,7 +26,7 @@ export default class Todos extends Component {
   addTodo(content) {
     const addCount = this.state.count + 1;
     this.setState({
-      todos: [...this.state.todos, content],
+      todos: [content, ...this.state.todos],
       count: addCount,
     });
   }
@@ -41,7 +41,7 @@ export default class Todos extends Component {
     console.log(this.state.count, this.state.todos);
     return (
       <div className="todos">
-        <CreateTodo />
+        <CreateTodo addTodo={this.addTodo} />
         {this.state.todos.map((todo) => (
           <Todo todo={todo} key={todo.id} removeTodo={this.removeTodo} />
         ))}

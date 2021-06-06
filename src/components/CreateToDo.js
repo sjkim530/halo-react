@@ -26,7 +26,7 @@ export default class CreateTodo extends Component {
         "https://halo-todo-app.herokuapp.com/todos",
         this.state
       );
-      this.props.addTodo(data.content);
+      this.props.addTodo(data);
       this.setState({
         content: "",
       });
