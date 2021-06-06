@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import CreateTodo from "./CreateToDo";
 
 export default class Todos extends Component {
   constructor() {
@@ -7,6 +8,7 @@ export default class Todos extends Component {
     this.state = {
       todos: [],
     };
+    this.addTodo = this.addTodo.bind(this);
   }
 
   async componentDidMount() {
@@ -14,9 +16,14 @@ export default class Todos extends Component {
     this.setState({ todos: res.data });
   }
 
+  addTodo(content) {
+    this.setState({ todos: [...this.state.todos, content] });
+  }
+
   render() {
     return (
-      <div class="todos">
+      <div className="todos">
+        <CreateTodo />
         <p>{this.state.todos}</p>
       </div>
     );
