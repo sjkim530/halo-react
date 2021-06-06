@@ -5,10 +5,16 @@ const BottomNavBar = (props) => {
 
   return (
     <div>
-      {count < 2 ? <p>{count} item left</p> : <p>{count} items left</p>}
-      <button type="button">All</button>
-      <button type="button">Active</button>
-      <button type="button">Completed</button>
+      {count === 1 ? <p>{count} item left</p> : <p>{count} items left</p>}
+      <button type="button" onClick={props.clickAll}>
+        All
+      </button>
+      <button type="button" onClick={props.clickActive}>
+        Active
+      </button>
+      <button type="button" onClick={props.clickCompleted}>
+        Completed
+      </button>
     </div>
   );
 };
