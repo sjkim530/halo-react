@@ -6,9 +6,17 @@ export default class CreateTodo extends Component {
     super(props);
     this.state = {
       content: "",
+      isDone: false,
       error: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
   }
 
   async handleSubmit(event) {
@@ -37,6 +45,8 @@ export default class CreateTodo extends Component {
             type="text"
             name="content"
             placeholder="What needs to be done?"
+            onChange={this.handleChange}
+            value={this.state.content}
           />
         </form>
       </div>

@@ -13,6 +13,7 @@ export default class Todos extends Component {
 
   async componentDidMount() {
     const res = await axios.get("https://halo-todo-app.herokuapp.com/todos");
+    console.log(res.data);
     this.setState({ todos: res.data });
   }
 
@@ -24,7 +25,9 @@ export default class Todos extends Component {
     return (
       <div className="todos">
         <CreateTodo />
-        <p>{this.state.todos}</p>
+        {this.state.todos.map((todo) => (
+          <p key={todo.id}>{todo.content}</p>
+        ))}
       </div>
     );
   }
