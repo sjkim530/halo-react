@@ -17,29 +17,28 @@ export default class Todos extends Component {
 
   async componentDidMount() {
     const res = await axios.get("https://halo-todo-app.herokuapp.com/todos");
-    this.setState({ todos: res.data });
-  }
-
-  async addTodo(content) {
-    const { data } = await axios.get(
+    const count = await axios.get(
       "https://halo-todo-app.herokuapp.com/todos/count"
     );
+    this.setState({ todos: res.data, count: count.data });
+  }
+
+  addTodo(content) {
+    const addCount = this.state.count + 1;
     this.setState({
       todos: [...this.state.todos, content],
-      count: data,
+      count: addCount,
     });
   }
 
-  async removeTodo(todoId) {
-    const res = await axios.get("https://halo-todo-app.herokuapp.com/todos");
-    const { data } = await axios.get(
-      "https://halo-todo-app.herokuapp.com/todos/count"
-    );
-    console.log(data);
-    this.setState({ todos: res.data, count: data });
+  removeTodo(todoId) {
+    const updatedTodos = this.state.todos.filter((todo) => todo.id !== todoId);
+    const subtractCount = this.state.count - 1;
+    this.setState({ todos: updatedTodos, count: subtractCount });
   }
 
   render() {
+    console.log(this.state.count, this.state.todos);
     return (
       <div className="todos">
         <CreateTodo />
