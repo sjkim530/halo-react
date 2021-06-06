@@ -5,9 +5,7 @@ const Todo = (props) => {
   const todo = props.todo;
 
   const handleClick = async (todoId) => {
-    const { data } = await axios.delete(
-      `https://halo-todo-app.herokuapp.com/todos/${todoId}`
-    );
+    await axios.delete(`https://halo-todo-app.herokuapp.com/todos/${todoId}`);
     props.removeTodo(todoId);
   };
 
