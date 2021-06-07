@@ -3,7 +3,6 @@ import axios from "axios";
 import CreateTodo from "./CreateToDo";
 import Todo from "./Todo";
 import BottomNavBar from "./BottomNavBar";
-import { act } from "react-dom/test-utils";
 
 export default class Todos extends Component {
   constructor() {
@@ -28,7 +27,11 @@ export default class Todos extends Component {
 
     if (count === 0) this.setState({ todos: res.data, count: count.data });
     else
-      this.setState({ todos: res.data, count: count.data, bottomNavBar: true });
+      this.setState({
+        todos: res.data.sort((a, b) => b.id - a.id),
+        count: count.data,
+        bottomNavBar: true,
+      });
   }
 
   addTodo(content) {
@@ -80,12 +83,17 @@ export default class Todos extends Component {
   }
 
   render() {
-    console.log(this.state.count, this.state.todos);
+    console.log(this.state.todos);
     return (
       <div className="todos">
         <CreateTodo addTodo={this.addTodo} />
         {this.state.todos.map((todo) => (
-          <Todo todo={todo} key={todo.id} removeTodo={this.removeTodo} />
+          <Todo
+            todo={todo}
+            key={todo.id}
+            removeTodo={this.removeTodo}
+            onChange={this.onChange}
+          />
         ))}
         {!this.state.bottomNavBar ? (
           <p></p>
