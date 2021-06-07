@@ -15,6 +15,7 @@ const BottomNavBar = (props) => {
       <button type="button" onClick={props.clickCompleted}>
         Completed
       </button>
+      <button type="button">Clear Completed</button>
     </div>
   );
 };

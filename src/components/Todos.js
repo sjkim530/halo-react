@@ -19,7 +19,6 @@ export default class Todos extends Component {
     this.clickActive = this.clickActive.bind(this);
     this.clickCompleted = this.clickCompleted.bind(this);
     this.clickChevron = this.clickChevron.bind(this);
-    this.rerender = this.rerender.bind(this);
   }
 
   async componentDidMount() {
@@ -127,22 +126,15 @@ export default class Todos extends Component {
     const res = await axios.get("https://halo-todo-app.herokuapp.com/todos");
 
     this.setState({ todos: res.data.sort((a, b) => b.id - a.id) });
-    console.log("WRJELKJL", this.state.todos);
-  }
-
-  rerender() {
-    this.setState({ reset: !this.state.reset });
   }
 
   render() {
-    console.log("xxxxx", this.state.todos);
     return (
       <div className="todos">
         <CreateTodo
           addTodo={this.addTodo}
           todos={this.state.todos}
           clickChevron={this.clickChevron}
-          rerender={this.rerender}
         />
         {this.state.todos.map((todo) => (
           <Todo

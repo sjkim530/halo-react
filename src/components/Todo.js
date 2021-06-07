@@ -6,7 +6,7 @@ const Todo = (props) => {
   const [checked, setChecked] = useState(todo.isDone);
 
   useEffect(() => {
-    setChecked(checked);
+    setChecked(todo.isDone);
   }, [todo.isDone]);
 
   const clickDelete = async (todoId) => {
