@@ -174,8 +174,8 @@ export default class Todos extends Component {
             updateStateAfterCheckboxClick={this.updateStateAfterCheckboxClick}
           />
         ))}
-        {!this.state.bottomNavBar ? (
-          <p></p>
+        {!this.state.bottomNavbar ? (
+          <span></span>
         ) : (
           <BottomNavBar
             todos={this.state.todos}
