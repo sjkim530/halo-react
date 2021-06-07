@@ -10,7 +10,7 @@ export default class Todos extends Component {
     this.state = {
       todos: [],
       count: 0,
-      bottomNavbar: false,
+      bottomNavBar: false,
     };
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
@@ -174,7 +174,7 @@ export default class Todos extends Component {
             updateStateAfterCheckboxClick={this.updateStateAfterCheckboxClick}
           />
         ))}
-        {!this.state.bottomNavbar ? (
+        {!this.state.bottomNavBar ? (
           <span></span>
         ) : (
           <BottomNavBar
