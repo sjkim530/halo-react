@@ -19,6 +19,7 @@ const Todo = (props) => {
       isDone: !checked,
     });
     setChecked(!checked);
+    props.updateStateAfterCheckboxClick();
   };
   return (
     <div key={todo.id}>

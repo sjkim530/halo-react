@@ -11,7 +11,6 @@ export default class Todos extends Component {
       todos: [],
       count: 0,
       bottomNavbar: false,
-      reset: false,
     };
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
@@ -19,6 +18,9 @@ export default class Todos extends Component {
     this.clickActive = this.clickActive.bind(this);
     this.clickCompleted = this.clickCompleted.bind(this);
     this.clickChevron = this.clickChevron.bind(this);
+    this.removeCompleted = this.removeCompleted.bind(this);
+    this.updateStateAfterCheckboxClick =
+      this.updateStateAfterCheckboxClick.bind(this);
   }
 
   async componentDidMount() {
@@ -56,6 +58,24 @@ export default class Todos extends Component {
         bottomNavBar: false,
       });
     } else this.setState({ todos: updatedTodos, count: subtractCount });
+  }
+
+  async removeCompleted() {
+    const { data } = await axios.get(
+      "https://halo-todo-app.herokuapp.com/todos"
+    );
+
+    if (!data.length) {
+      this.setState({
+        todos: data.sort((a, b) => b.id - a.id),
+        count: data.length,
+        bottomNavBar: false,
+      });
+    } else
+      this.setState({
+        todos: data.sort((a, b) => b.id - a.id),
+        count: data.length,
+      });
   }
 
   async clickAll() {
@@ -128,6 +148,15 @@ export default class Todos extends Component {
     this.setState({ todos: res.data.sort((a, b) => b.id - a.id) });
   }
 
+  async updateStateAfterCheckboxClick() {
+    const { data } = await axios.get(
+      "https://halo-todo-app.herokuapp.com/todos"
+    );
+    this.setState({
+      todos: data.sort((a, b) => b.id - a.id),
+    });
+  }
+
   render() {
     return (
       <div className="todos">
@@ -142,16 +171,19 @@ export default class Todos extends Component {
             key={todo.id}
             removeTodo={this.removeTodo}
             onChange={this.onChange}
+            updateStateAfterCheckboxClick={this.updateStateAfterCheckboxClick}
           />
         ))}
         {!this.state.bottomNavBar ? (
           <p></p>
         ) : (
           <BottomNavBar
+            todos={this.state.todos}
             count={this.state.count}
             clickAll={this.clickAll}
             clickActive={this.clickActive}
             clickCompleted={this.clickCompleted}
+            removeCompleted={this.removeCompleted}
           />
         )}
       </div>
