@@ -11,12 +11,15 @@ export default class Todos extends Component {
       todos: [],
       count: 0,
       bottomNavbar: false,
+      reset: false,
     };
     this.addTodo = this.addTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
     this.clickAll = this.clickAll.bind(this);
     this.clickActive = this.clickActive.bind(this);
     this.clickCompleted = this.clickCompleted.bind(this);
+    this.clickChevron = this.clickChevron.bind(this);
+    this.rerender = this.rerender.bind(this);
   }
 
   async componentDidMount() {
@@ -82,11 +85,65 @@ export default class Todos extends Component {
     });
   }
 
+  async clickChevron() {
+    const isDoneTodos = this.state.todos.map((todo) => todo.isDone);
+    const currState = this.state.todos;
+
+    if (isDoneTodos.includes(true) && isDoneTodos.includes(false)) {
+      await Promise.all(
+        currState.map(async (todo) => {
+          await axios.put(
+            `https://halo-todo-app.herokuapp.com/todos/${todo.id}`,
+            {
+              isDone: true,
+            }
+          );
+        })
+      );
+    } else if (isDoneTodos.includes(false) && !isDoneTodos.includes(true)) {
+      await Promise.all(
+        currState.map(async (todo) => {
+          await axios.put(
+            `https://halo-todo-app.herokuapp.com/todos/${todo.id}`,
+            {
+              isDone: true,
+            }
+          );
+        })
+      );
+    } else {
+      await Promise.all(
+        currState.map(async (todo) => {
+          await axios.put(
+            `https://halo-todo-app.herokuapp.com/todos/${todo.id}`,
+            {
+              isDone: false,
+            }
+          );
+        })
+      );
+    }
+
+    const res = await axios.get("https://halo-todo-app.herokuapp.com/todos");
+
+    this.setState({ todos: res.data.sort((a, b) => b.id - a.id) });
+    console.log("WRJELKJL", this.state.todos);
+  }
+
+  rerender() {
+    this.setState({ reset: !this.state.reset });
+  }
+
   render() {
-    console.log(this.state.todos);
+    console.log("xxxxx", this.state.todos);
     return (
       <div className="todos">
-        <CreateTodo addTodo={this.addTodo} />
+        <CreateTodo
+          addTodo={this.addTodo}
+          todos={this.state.todos}
+          clickChevron={this.clickChevron}
+          rerender={this.rerender}
+        />
         {this.state.todos.map((todo) => (
           <Todo
             todo={todo}

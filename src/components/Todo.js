@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const Todo = (props) => {
   const todo = props.todo;
   const [checked, setChecked] = useState(todo.isDone);
+
+  useEffect(() => {
+    setChecked(checked);
+  }, [todo.isDone]);
 
   const clickDelete = async (todoId) => {
     await axios.delete(`https://halo-todo-app.herokuapp.com/todos/${todoId}`);
@@ -16,7 +20,6 @@ const Todo = (props) => {
     });
     setChecked(!checked);
   };
-
   return (
     <div key={todo.id}>
       <input

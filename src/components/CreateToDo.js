@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Chevron from "./Chevron";
 
 export default class CreateTodo extends Component {
   constructor(props) {
@@ -40,6 +41,10 @@ export default class CreateTodo extends Component {
   render() {
     return (
       <div>
+        <Chevron
+          clickChevron={this.props.clickChevron}
+          rerender={this.props.rerender}
+        />
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
