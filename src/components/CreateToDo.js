@@ -23,14 +23,18 @@ export default class CreateTodo extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      const { data } = await axios.post(
-        "https://halo-todo-app.herokuapp.com/todos",
-        this.state
-      );
-      this.props.addTodo(data);
-      this.setState({
-        content: "",
-      });
+      if (!this.state.content.trim())
+        throw new Error(alert("Invalid input. Please try again"));
+      else {
+        const { data } = await axios.post(
+          "https://halo-todo-app.herokuapp.com/todos",
+          this.state
+        );
+        this.props.addTodo(data);
+        this.setState({
+          content: "",
+        });
+      }
     } catch (error) {
       this.setState({
         error,
@@ -49,6 +53,7 @@ export default class CreateTodo extends Component {
             placeholder="What needs to be done?"
             onChange={this.handleChange}
             value={this.state.content}
+            required
           />
         </form>
       </div>
