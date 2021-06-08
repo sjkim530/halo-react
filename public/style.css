@@ -36,7 +36,8 @@ input[type="checkbox"]:checked + .checkbox-label {
   font-size: 0.9em;
 }
 
-.bottomnavbar-container button:hover {
+.bottomnavbar-container button:hover,
+.bottomnavbar-container button:focus {
   color: blue;
   border-style: solid;
   border-width: 1px;
