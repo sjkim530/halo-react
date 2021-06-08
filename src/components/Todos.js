@@ -29,7 +29,7 @@ export default class Todos extends Component {
       "https://halo-todo-app.herokuapp.com/todos/count"
     );
 
-    if (count === 0) this.setState({ todos: res.data, count: count.data });
+    if (count.data === 0) this.setState({ todos: res.data, count: count.data });
     else
       this.setState({
         todos: res.data.sort((a, b) => b.id - a.id),

@@ -51,7 +51,7 @@ const Todo = (props) => {
       setToggle(true);
     }
   };
-  console.log(clicks);
+
   return (
     <div key={todo.id}>
       <input
