@@ -8,6 +8,7 @@ export default class App extends Component {
       <div className="App">
         <h1>todos</h1>
         <Route exact path="/" component={Todos} />
+        <h5>Double-click to edit a todo</h5>
       </div>
     );
   }
