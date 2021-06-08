@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/halo-react/static/js/main.8a9584f3.chunk.js",
-    "main.js.map": "/halo-react/static/js/main.8a9584f3.chunk.js.map",
+    "main.js": "/halo-react/static/js/main.be189bf9.chunk.js",
+    "main.js.map": "/halo-react/static/js/main.be189bf9.chunk.js.map",
     "runtime-main.js": "/halo-react/static/js/runtime-main.25ae042e.js",
     "runtime-main.js.map": "/halo-react/static/js/runtime-main.25ae042e.js.map",
     "static/js/2.0f5b2f4d.chunk.js": "/halo-react/static/js/2.0f5b2f4d.chunk.js",
@@ -12,6 +12,6 @@
   "entrypoints": [
     "static/js/runtime-main.25ae042e.js",
     "static/js/2.0f5b2f4d.chunk.js",
-    "static/js/main.8a9584f3.chunk.js"
+    "static/js/main.be189bf9.chunk.js"
   ]
 }
