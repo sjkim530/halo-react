@@ -6,18 +6,33 @@ const Todo = (props) => {
   const [checked, setChecked] = useState(todo.isDone);
   const [toggle, setToggle] = useState(true);
   const [content, setContent] = useState(todo.content);
+  let [clicks, setClicks] = useState(0);
 
   useEffect(() => {
     setChecked(todo.isDone);
   }, [todo.isDone]);
+
+  useEffect(() => {
+    let clickTimer;
+    if (clicks === 1) {
+      clickTimer = setTimeout(function () {
+        clickCheckbox();
+        setClicks(0);
+      }, 250);
+    } else if (clicks === 2) {
+      setToggle(false);
+      setClicks(0);
+    }
+    return () => clearTimeout(clickTimer);
+  }, [clicks]);
 
   const clickDelete = async (todoId) => {
     await axios.delete(`https://halo-todo-app.herokuapp.com/todos/${todoId}`);
     props.removeTodo(todoId);
   };
 
-  const clickCheckbox = async (todoId) => {
-    await axios.put(`https://halo-todo-app.herokuapp.com/todos/${todoId}`, {
+  const clickCheckbox = async () => {
+    await axios.put(`https://halo-todo-app.herokuapp.com/todos/${todo.id}`, {
       isDone: !checked,
     });
     setChecked(!checked);
@@ -36,18 +51,17 @@ const Todo = (props) => {
       setToggle(true);
     }
   };
+  console.log(clicks);
   return (
     <div key={todo.id}>
       <input
         id={content}
         type="checkbox"
-        onChange={() => clickCheckbox(todo.id)}
+        onChange={() => setClicks(clicks + 1)}
         checked={checked}
       />
       {toggle ? (
-        <label htmlFor={content} onDoubleClick={() => setToggle(false)}>
-          {content}
-        </label>
+        <label htmlFor={content}>{content}</label>
       ) : (
         <input
           type="text"
