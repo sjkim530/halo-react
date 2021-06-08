@@ -1,0 +1,148 @@
+body {
+  background-color: #f5f5dc;
+}
+
+button {
+  border: none;
+  background-color: white;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+}
+
+input[type="checkbox"]:checked + .checkbox-label {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.bottomnavbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: 1px;
+  border-top: none;
+  height: 40px;
+}
+
+.bottomnavbar-container span {
+  width: 112.031px;
+}
+
+.bottomnavbar-container button {
+  font-size: 0.9em;
+}
+
+.bottomnavbar-container button:hover {
+  color: red;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+}
+
+.checkbox-container {
+  width: 460px;
+}
+
+.checkbox-input {
+  margin: 3px 10px 3px 10px;
+}
+
+.checkbox-label {
+  display: inline-block;
+  width: 420px;
+}
+
+.chevron-button {
+  font-size: 1.5em;
+  margin-bottom: 6px;
+}
+
+.chevron-button:hover {
+  opacity: 0.5;
+}
+
+.clear-completed-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.createtodo-container {
+  display: flex;
+  flex-direction: row;
+  border-style: solid;
+  border-width: 1px;
+  height: 2.5em;
+  align-items: center;
+}
+
+.createtodo-container input {
+  border: none;
+  font-size: 1.5em;
+  width: 460px;
+  opacity: 0.5;
+}
+
+.edit-input {
+  width: 300px;
+}
+
+.filter-button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.item-count {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.item-count p {
+  margin: 5px 0 5px 0;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 498px;
+  font-size: 1.5em;
+  border-style: solid;
+  border-width: 1px;
+  height: 42px;
+  align-items: center;
+  border-top: none;
+}
+
+.todo-container button {
+  opacity: 0;
+  padding-right: 15px;
+  font-size: 0.8em;
+}
+
+.todo-container button:hover {
+  opacity: 1;
+  color: red;
+}
+
+.todo-container input {
+  font-size: 1em;
+}
+
+.todos {
+  display: flex;
+  justify-content: center;
+}
+
+.todos-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background-color: white;
+}

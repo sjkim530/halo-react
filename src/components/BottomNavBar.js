@@ -22,21 +22,35 @@ const BottomNavBar = (props) => {
   };
 
   return (
-    <div>
-      {count === 1 ? <p>{count} item left</p> : <p>{count} items left</p>}
-      <button type="button" onClick={props.clickAll}>
-        All
-      </button>
-      <button type="button" onClick={props.clickActive}>
-        Active
-      </button>
-      <button type="button" onClick={props.clickCompleted}>
-        Completed
-      </button>
-      {todos.includes(true) ? (
-        <button type="button" onClick={clickClearCompleted}>
-          Clear Completed
+    <div className="bottomnavbar-container">
+      {count === 1 ? (
+        <div className="item-count">
+          {" "}
+          <p>{count} item left</p>{" "}
+        </div>
+      ) : (
+        <div className="item-count">
+          {" "}
+          <p>{count} items left</p>{" "}
+        </div>
+      )}
+      <div className="filter-button-container">
+        <button type="button" onClick={props.clickAll}>
+          All
         </button>
+        <button type="button" onClick={props.clickActive}>
+          Active
+        </button>
+        <button type="button" onClick={props.clickCompleted}>
+          Completed
+        </button>
+      </div>
+      {todos.includes(true) ? (
+        <div className="clear-completed-button-container">
+          <button type="button" onClick={clickClearCompleted}>
+            Clear Completed
+          </button>
+        </div>
       ) : (
         <span></span>
       )}

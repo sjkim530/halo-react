@@ -3,7 +3,11 @@ import React from "react";
 const Chevron = (props) => {
   return (
     <div>
-      <button type="button" onClick={props.clickChevron}>
+      <button
+        className="chevron-button"
+        type="button"
+        onClick={props.clickChevron}
+      >
         ⌄
       </button>
     </div>

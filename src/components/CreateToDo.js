@@ -40,7 +40,7 @@ export default class CreateTodo extends Component {
 
   render() {
     return (
-      <div>
+      <div className="createtodo-container">
         <Chevron clickChevron={this.props.clickChevron} />
         <form onSubmit={this.handleSubmit}>
           <input

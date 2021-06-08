@@ -160,32 +160,35 @@ export default class Todos extends Component {
   render() {
     return (
       <div className="todos">
-        <CreateTodo
-          addTodo={this.addTodo}
-          todos={this.state.todos}
-          clickChevron={this.clickChevron}
-        />
-        {this.state.todos.map((todo) => (
-          <Todo
-            todo={todo}
-            key={todo.id}
-            removeTodo={this.removeTodo}
-            onChange={this.onChange}
-            updateStateAfterCheckboxClick={this.updateStateAfterCheckboxClick}
-          />
-        ))}
-        {!this.state.bottomNavBar ? (
-          <span></span>
-        ) : (
-          <BottomNavBar
+        <div className="todos-container">
+          <CreateTodo
+            addTodo={this.addTodo}
             todos={this.state.todos}
-            count={this.state.count}
-            clickAll={this.clickAll}
-            clickActive={this.clickActive}
-            clickCompleted={this.clickCompleted}
-            removeCompleted={this.removeCompleted}
+            clickChevron={this.clickChevron}
           />
-        )}
+
+          {this.state.todos.map((todo) => (
+            <Todo
+              todo={todo}
+              key={todo.id}
+              removeTodo={this.removeTodo}
+              onChange={this.onChange}
+              updateStateAfterCheckboxClick={this.updateStateAfterCheckboxClick}
+            />
+          ))}
+          {!this.state.bottomNavBar ? (
+            <span></span>
+          ) : (
+            <BottomNavBar
+              todos={this.state.todos}
+              count={this.state.count}
+              clickAll={this.clickAll}
+              clickActive={this.clickActive}
+              clickCompleted={this.clickCompleted}
+              removeCompleted={this.removeCompleted}
+            />
+          )}
+        </div>
       </div>
     );
   }

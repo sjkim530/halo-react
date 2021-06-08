@@ -53,24 +53,29 @@ const Todo = (props) => {
   };
 
   return (
-    <div key={todo.id}>
-      <input
-        id={content}
-        type="checkbox"
-        onChange={() => setClicks(clicks + 1)}
-        checked={checked}
-      />
-      {toggle ? (
-        <label htmlFor={content}>{content}</label>
-      ) : (
+    <div className="todo-container" key={todo.id}>
+      <div className="checkbox-container">
         <input
-          type="text"
-          value={content}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
+          id={content}
+          className="checkbox-input"
+          type="checkbox"
+          onChange={() => setClicks(clicks + 1)}
+          checked={checked}
         />
-      )}
-
+        {toggle ? (
+          <label htmlFor={content} className="checkbox-label">
+            {content}
+          </label>
+        ) : (
+          <input
+            type="text"
+            className="edit-input"
+            value={content}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
+        )}
+      </div>
       <button
         className="delete"
         type="button"
