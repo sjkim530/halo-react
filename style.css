@@ -29,6 +29,7 @@ input[type="checkbox"]:checked + .checkbox-label {
 
 .bottomnavbar-container span {
   width: 112.031px;
+  margin-right: 10px;
 }
 
 .bottomnavbar-container button {
