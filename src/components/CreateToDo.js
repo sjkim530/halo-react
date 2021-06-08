@@ -23,9 +23,12 @@ export default class CreateTodo extends Component {
   async handleSubmit(event) {
     event.preventDefault();
     try {
-      if (!this.state.content.trim())
+      if (!this.state.content.trim()) {
+        this.setState({
+          content: "",
+        });
         throw new Error(alert("Invalid input. Please try again"));
-      else {
+      } else {
         const { data } = await axios.post(
           "https://halo-todo-app.herokuapp.com/todos",
           this.state
