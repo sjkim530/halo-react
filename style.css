@@ -12,6 +12,10 @@ h1 {
   font-size: 4em;
 }
 
+h5 {
+  text-align: center;
+}
+
 input[type="checkbox"]:checked + .checkbox-label {
   text-decoration: line-through;
   opacity: 0.5;
