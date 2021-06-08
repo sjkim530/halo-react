@@ -22,7 +22,7 @@ input[type="checkbox"]:checked + .checkbox-label {
   flex-direction: row;
   justify-content: space-between;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1.5px;
   border-top: none;
   height: 40px;
 }
@@ -36,7 +36,8 @@ input[type="checkbox"]:checked + .checkbox-label {
   font-size: 0.9em;
 }
 
-.bottomnavbar-container button:hover {
+.bottomnavbar-container button:hover,
+.bottomnavbar-container button:focus {
   color: blue;
   border-style: solid;
   border-width: 1px;
@@ -76,7 +77,7 @@ input[type="checkbox"]:checked + .checkbox-label {
   display: flex;
   flex-direction: row;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1.5px;
   height: 2.5em;
   align-items: center;
 }
@@ -112,10 +113,10 @@ input[type="checkbox"]:checked + .checkbox-label {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 498px;
+  width: 497px;
   font-size: 1.5em;
   border-style: solid;
-  border-width: 1px;
+  border-width: 1.5px;
   height: 42px;
   align-items: center;
   border-top: none;
@@ -147,4 +148,52 @@ input[type="checkbox"]:checked + .checkbox-label {
   flex-direction: column;
   width: 500px;
   background-color: white;
+}
+
+@media screen and (max-width: 520px) {
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .checkbox-label {
+    width: 70vw;
+  }
+
+  .createtodo-container input {
+    width: 85vw;
+  }
+
+  .edit-input {
+    width: 70vw;
+  }
+
+  .todo-container {
+    width: 95.3vw;
+    height: auto;
+  }
+
+  .todos-container {
+    width: 96vw;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .bottomnavbar-container {
+    height: auto;
+  }
+
+  .createtodo-container input {
+    width: 80vw;
+    font-size: 1.2em;
+  }
+
+  .edit-input {
+    width: 60vw;
+  }
+
+  .filter-button-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
